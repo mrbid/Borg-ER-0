@@ -2,7 +2,7 @@
     James William Fletcher (james@voxdsp.com)
         September 2021
     
-    Borg ER-3
+    Borg ER-0
 */
 #ifndef SYNTH_H
 #define SYNTH_H
