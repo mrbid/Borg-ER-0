@@ -286,14 +286,14 @@ void render(SDL_Surface* screen)
     }
 
     // button hover
-    if(ui.bankl_hover == 1){ih=1; setColourLightness(bb, bankl_rect, bgcolor, select_lightness);}
-    else if(ui.bankr_hover == 1){ih=1; setColourLightness(bb, bankr_rect, bgcolor, select_lightness);}
-    else if(ui.load_hover == 1){ih=1; setColourLightness(bb, load_rect, bgcolor, select_lightness);}
-    else if(ui.save_hover == 1){ih=1; setColourLightness(bb, save_rect, bgcolor, select_lightness);}
-    else if(ui.secl_hover == 1){ih=1; setColourLightness(bb, secl_rect, bgcolor, select_lightness);}
-    else if(ui.secr_hover == 1){ih=1; setColourLightness(bb, secr_rect, bgcolor, select_lightness);}
-    else if(ui.export_hover == 1){ih=1; setColourLightness(bb, export_rect, bgcolor, select_lightness);}
-    else if(ui.play_hover == 1){ih=1; setColourLightness(bb, play_rect, bgcolor, select_lightness);}
+    if(ui.bankl_hover == 1){ih=1; setAreaLightness(bb, bankl_rect, select_lightness);}
+    else if(ui.bankr_hover == 1){ih=1; setAreaLightness(bb, bankr_rect, select_lightness);}
+    else if(ui.load_hover == 1){ih=1; setAreaLightness(bb, load_rect, select_lightness);}
+    else if(ui.save_hover == 1){ih=1; setAreaLightness(bb, save_rect, select_lightness);}
+    else if(ui.secl_hover == 1){ih=1; setAreaLightness(bb, secl_rect, select_lightness);}
+    else if(ui.secr_hover == 1){ih=1; setAreaLightness(bb, secr_rect, select_lightness);}
+    else if(ui.export_hover == 1){ih=1; setAreaLightness(bb, export_rect, select_lightness);}
+    else if(ui.play_hover == 1){ih=1; setAreaLightness(bb, play_rect, select_lightness);}
 
     // colourise theme for export feedback
     if(themeon > 0)
