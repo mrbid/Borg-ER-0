@@ -617,7 +617,7 @@ int main(int argc, char *args[])
                             {
                                 sc=1;
                                 char file[256];
-                                sprintf(file, "%sbank-%d.wav", basedir, selected_bank);
+                                sprintf(file, "bank-%d.wav", selected_bank);
                                 writeWAV(file);
 
                                 // some user feedback
