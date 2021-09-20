@@ -125,7 +125,7 @@ void doSynth(Uint8 play)
     {
         osc = (oscillator(phase, &synth[selected_bank].osctable[0])-0.5f) * a;
         osc *= wlerp(synth[selected_bank].envelope[envelope_offset], synth[selected_bank].envelope[envelope_offset+1], ((float)eic)*r_samstep);
-        sample[i] = osc;
+        sample[i] = quantise_float(osc);
 
         // step phase
         phase += Hz(f)*reciprocal_sample_rate;
