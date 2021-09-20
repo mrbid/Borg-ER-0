@@ -18,6 +18,7 @@ float oscillator(const float theta, const float* table);
 float Hz(float hz);
 float squish(float f);
 int fZero(float f);
+Sint8 quantise_float(float f);
 
 // init
 int initMonoAudio(int samplerate);
@@ -67,6 +68,15 @@ int fZero(float f)
 float squish(float f)
 {
     return fabs(tanh(f));
+}
+
+Sint8 quantise_float(float f)
+{
+    if(f < 0)
+        f -= 0.5f;
+    else
+        f += 0.5f;
+    return (Sint8)f;
 }
 
 // vars
