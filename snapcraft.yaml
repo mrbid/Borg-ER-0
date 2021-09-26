@@ -3,9 +3,9 @@ base: core18
 version: '1.0'
 summary: An audio synthesizer / tone generator allows users to draw oscillators and envelopes.
 description: |
-  This is a very simple tone generator that allows users to draw an oscillator waveshape and envelope, the oscillator can then be tuned by freqency and amplitude.
-  
-  It's a pretty interesting toy and it can generate some interestesting tones. It has it's limitations, but I found it eye opening what te contract of limitations was in comparison to a tone generator with frequency modulation and other forms of synthesis.
+  This is a very simple tone generator that allows users to draw an oscillator wave-shape and envelope, the oscillator can then be tuned by frequency and amplitude.
+
+  It's a pretty interesting toy and it can generate some interesting tones. It has it's limitations, but I found it eye opening what the contrast of limitations was in comparison to a tone generator with frequency modulation and other forms of synthesis.
 
 grade: stable
 confinement: strict
