@@ -2,7 +2,7 @@ all:
 	gcc main.c -Ofast -lSDL2 -lm -o borg0
 
 install:
-	cp snowball $(DESTDIR)
+	cp borg0 $(DESTDIR)
 
 uninstall:
 	rm $(DESTDIR)/borg0
