@@ -1,4 +1,4 @@
-name: borg0
+name: borger0
 base: core18
 version: '1.0'
 summary: An audio synthesizer / tone generator allows users to draw oscillators and envelopes.
