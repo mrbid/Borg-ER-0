@@ -679,6 +679,10 @@ int main(int argc, char *args[])
                 case SDL_QUIT:
                 {
                     saveState();
+                    SDL_FreeSurface(bb);
+                    SDL_FreeSurface(s_bg);
+                    SDL_FreeSurface(s_icon);
+                    drawText(NULL, "*K", 0, 0, 0);
                     SDL_DestroyWindow(window);
                     SDL_Quit();
                     exit(0);
