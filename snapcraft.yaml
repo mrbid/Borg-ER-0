@@ -19,12 +19,12 @@ architectures:
     run-on: armhf
 
 apps:
-  borg:
+  borg0:
     extensions: [gnome-3-34]
     command: borg0
 
 parts:
-  borg:
+  borg0:
     source: https://github.com/mrbid/Borg-ER-0
     source-type: git
     plugin: make
