@@ -1,4 +1,4 @@
-name: borger0
+name: borg0
 base: core18
 version: '1.0'
 summary: Draw oscillators and envelopes.
