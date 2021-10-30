@@ -22,5 +22,5 @@ https://github.com/mrbid/Borg-ER-0/raw/main/SDL2.dll
 ## Linux AppImage
 https://github.com/mrbid/Borg-ER-0/raw/main/borg0-x86_64.AppImage
 
-## Linux Binary (Ubuntu)
+## Linux Binary (Ubuntu 21.04)
 https://github.com/mrbid/Borg-ER-0/raw/main/borg0
