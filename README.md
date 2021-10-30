@@ -19,5 +19,8 @@ and rename it to `SDL2`.
 https://github.com/mrbid/Borg-ER-0/raw/main/borg0.exe<br>
 https://github.com/mrbid/Borg-ER-0/raw/main/SDL2.dll
 
-## Linux Binary
+## Linux AppImage
+https://github.com/mrbid/Borg-ER-0/raw/main/borg0-x86_64.AppImage
+
+## Linux Binary (Ubuntu)
 https://github.com/mrbid/Borg-ER-0/raw/main/borg0
