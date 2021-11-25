@@ -1,4 +1,4 @@
-name: borg0
+name: borger0
 base: core18
 version: '1.0'
 summary: Draw oscillators and envelopes.
@@ -19,12 +19,12 @@ architectures:
     run-on: armhf
 
 apps:
-  borg0:
+  borger0:
     extensions: [gnome-3-34]
     command: borg0
 
 parts:
-  borg0:
+  borger0:
     source: https://github.com/mrbid/Borg-ER-0
     source-type: git
     plugin: make
