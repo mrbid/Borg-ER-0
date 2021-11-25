@@ -21,7 +21,7 @@ architectures:
 apps:
   borger0:
     extensions: [gnome-3-34]
-    command: borg0
+    command: borger0
 
 parts:
   borger0:
