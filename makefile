@@ -1,11 +1,11 @@
 all:
-	gcc main.c -Ofast -lSDL2 -lm -o borg0
+	gcc main.c -Ofast -lSDL2 -lm -o borger0
 
 install:
-	cp borg0 $(DESTDIR)
+	cp borger0 $(DESTDIR)
 
 uninstall:
-	rm $(DESTDIR)/borg0
+	rm $(DESTDIR)/borger0
 
 clean:
-	rm borg0
+	rm borger0
