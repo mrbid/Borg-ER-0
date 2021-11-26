@@ -24,3 +24,6 @@ https://github.com/mrbid/Borg-ER-0/raw/main/borg0-x86_64.AppImage
 
 ## Linux Binary (Ubuntu 21.04)
 https://github.com/mrbid/Borg-ER-0/raw/main/borg0
+
+## Snapcraft / Software Center
+https://snapcraft.io/borger0
