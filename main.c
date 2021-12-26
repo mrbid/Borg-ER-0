@@ -169,7 +169,7 @@ void loadAssets(SDL_Surface* screen)
             synth[i].envelope[j] = 0.5f;
         const float su = 6.283185482f / (float)(osc_rect.w-2);
         for(int j = 0; j < osc_rect.w-2; j++)
-            synth[i].osctable[j] = (sin(su*j)+1.0f)*0.5f;
+            synth[i].osctable[j] = (sinf(su*j)+1.0f)*0.5f;
         synth[i].seclen = 3;
         synth[i].dial_state[0] = 0.04f;
         synth[i].dial_state[1] = 1.f;
@@ -248,8 +248,8 @@ void render(SDL_Surface* screen)
         const Uint32 sx = dial_rect[i].x+hh;
         const Uint32 sy = dial_rect[i].y+hh;
         const float radius = (float)(hh-2);
-        const float c1 = (cos(1.570796371f + (synth[selected_bank].dial_state[i] * 6.283185482f)) * radius)+0.5f;
-        const float s1 = (sin(1.570796371f + (synth[selected_bank].dial_state[i] * 6.283185482f)) * radius)+0.5f;
+        const float c1 = (cosf(1.570796371f + (synth[selected_bank].dial_state[i] * 6.283185482f)) * radius)+0.5f;
+        const float s1 = (sinf(1.570796371f + (synth[selected_bank].dial_state[i] * 6.283185482f)) * radius)+0.5f;
         const Uint32 ex = sx + c1;
         const Uint32 ey = sy + s1;
         line(bb, sx, sy, ex, ey, 255,255,255);
