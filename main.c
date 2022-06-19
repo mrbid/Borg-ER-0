@@ -684,6 +684,7 @@ int main(int argc, char *args[])
                     SDL_FreeSurface(s_icon);
                     drawText(NULL, "*K", 0, 0, 0);
                     SDL_DestroyWindow(window);
+                    SDL_CloseAudio();
                     SDL_Quit();
                     exit(0);
                 }
