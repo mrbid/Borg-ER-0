@@ -223,12 +223,12 @@ void render(SDL_Surface* screen)
     // oscillator
     Uint32 eby = osc_rect.y+osc_rect.h-2;
     Uint32 ofh = (osc_rect.h-3);
-    linergb(bb, osc_rect.x, eby-(ofh/2), osc_rect.x, eby-(ofh*synth[selected_bank].osctable[0]), 220, 95, 117);
+    line(bb, osc_rect.x, eby-(ofh/2), osc_rect.x, eby-(ofh*synth[selected_bank].osctable[0]), 220, 95, 117);
     for(int i = 1; i < osc_rect.w-2; i++)
     {
-        linergb(bb, osc_rect.x+i, eby-(ofh*synth[selected_bank].osctable[i-1]), osc_rect.x+i+1, eby-(ofh*synth[selected_bank].osctable[i]), 220, 95, 117);
+        line(bb, osc_rect.x+i, eby-(ofh*synth[selected_bank].osctable[i-1]), osc_rect.x+i+1, eby-(ofh*synth[selected_bank].osctable[i]), 220, 95, 117);
     }
-    linergb(bb, osc_rect.x+osc_rect.w-1, eby-(ofh*synth[selected_bank].osctable[osc_rect.w-3]), osc_rect.x+osc_rect.w-1, eby-(ofh/2), 220, 95, 117);
+    line(bb, osc_rect.x+osc_rect.w-1, eby-(ofh*synth[selected_bank].osctable[osc_rect.w-3]), osc_rect.x+osc_rect.w-1, eby-(ofh/2), 220, 95, 117);
     if(osc_enabled == 1)
         setColourLightness(bb, osc_rect, scopecolor, 33);
 
@@ -236,7 +236,7 @@ void render(SDL_Surface* screen)
     eby = envelope_rect.y+envelope_rect.h-2;
     for(int i = 0; i < envelope_rect.w-2; i++)
     {
-        linergb(bb, envelope_rect.x+i+1, eby, envelope_rect.x+i+1, eby-((envelope_rect.h-3)*synth[selected_bank].envelope[i]), 220, 95, 117);
+        line(bb, envelope_rect.x+i+1, eby, envelope_rect.x+i+1, eby-((envelope_rect.h-3)*synth[selected_bank].envelope[i]), 220, 95, 117);
     }
     if(envelope_enabled == 1)
         setColourLightness(bb, envelope_rect, scopecolor, 33);
@@ -252,7 +252,7 @@ void render(SDL_Surface* screen)
         const float s1 = (sinf(1.570796371f + (synth[selected_bank].dial_state[i] * 6.283185482f)) * radius)+0.5f;
         const Uint32 ex = sx + c1;
         const Uint32 ey = sy + s1;
-        linergb(bb, sx, sy, ex, ey, 255,255,255);
+        line(bb, sx, sy, ex, ey, 255,255,255);
 
         if(ui.dial_hover[i] == 1)
         {
@@ -266,21 +266,21 @@ void render(SDL_Surface* screen)
 
             if(select_mode == 0)
             {
-                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 108, 108, 108);
-                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 108, 108, 108);
-                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
+                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 108, 108, 108);
+                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 108, 108, 108);
+                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
             }
             else if(select_mode == 1)
             {
-                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 0, 163, 232);
-                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 0, 163, 232);
-                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
+                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 0, 163, 232);
+                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 0, 163, 232);
+                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
             }
             else if(select_mode == 2)
             {
-                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 220, 95, 117);
-                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 220, 95, 117);
-                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
+                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 220, 95, 117);
+                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 220, 95, 117);
+                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
             }
         }
     }
@@ -682,6 +682,7 @@ int main(int argc, char *args[])
                     SDL_FreeSurface(bb);
                     SDL_FreeSurface(s_bg);
                     SDL_FreeSurface(s_icon);
+                    SDL_CursorPointer(1337);
                     drawText(NULL, "*K", 0, 0, 0);
                     SDL_DestroyWindow(window);
                     SDL_CloseAudio();
