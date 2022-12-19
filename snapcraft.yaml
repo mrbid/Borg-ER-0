@@ -22,6 +22,14 @@ apps:
   borger0:
     extensions: [gnome-3-34]
     command: borger0
+    plugs:
+    - audio-playback
+    - desktop
+    - desktop-legacy
+    - gsettings
+    - opengl
+    - wayland
+    - x11
 
 parts:
   borger0:
