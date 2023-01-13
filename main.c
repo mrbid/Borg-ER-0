@@ -347,8 +347,16 @@ int main(int argc, char *args[])
     // get app dir
     basedir = SDL_GetBasePath();
     appdir = SDL_GetPrefPath("voxdsp", "borger0");
-    printf("%s\n", basedir);
-    printf("%s\n", appdir);
+    printf("basePath: %s\n", basedir);
+    printf("prefPath: %s\n", appdir);
+
+    // sdl version
+    SDL_version compiled;
+    SDL_version linked;
+    SDL_VERSION(&compiled);
+    SDL_GetVersion(&linked);
+    printf("Compiled against SDL version %u.%u.%u.\n", compiled.major, compiled.minor, compiled.patch);
+    printf("Linked against SDL version %u.%u.%u.\n", linked.major, linked.minor, linked.patch);
 
     // load assets
     loadAssets(screen);
@@ -455,7 +463,8 @@ int main(int argc, char *args[])
                             synth[selected_bank].dial_state[selected_dial] = 1.f;
                         else if(synth[selected_bank].dial_state[selected_dial] < -1.f)
                             synth[selected_bank].dial_state[selected_dial] = -1.f;
-                        SDL_WarpMouseInWindow(window, dial_rect[selected_dial].x+hh, dial_rect[selected_dial].y+hh);
+                        if(y != dial_rect[selected_dial].y+hh)
+                            SDL_WarpMouseInWindow(window, dial_rect[selected_dial].x+hh, dial_rect[selected_dial].y+hh);
 
                         // tick dial turn renders at 20 fps
                         static Uint32 lt = 0;
