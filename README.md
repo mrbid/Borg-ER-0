@@ -1,4 +1,4 @@
-# Borg-ER-0
+# Borg ER-0
 A portable (SDL) audio synthesizer / tone generator allows users to draw oscillators and envelopes.
 
 ![Image of the Borg-ER3](https://miro.medium.com/max/700/1*PIn60YZ3wNEytljl0B4aig.png)
