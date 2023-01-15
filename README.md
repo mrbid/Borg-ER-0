@@ -23,7 +23,10 @@ https://github.com/mrbid/Borg-ER-0/raw/main/SDL2.dll
 https://github.com/mrbid/Borg-ER-0/raw/main/borg0-x86_64.AppImage
 
 ## Linux Binary (Ubuntu 22.10)
-https://github.com/mrbid/Borg-ER-0/raw/main/borg0
+https://github.com/mrbid/Borg-ER-0/raw/main/
+
+## Deb (Ubuntu 22.10)
+https://github.com/mrbid/Borg-ER-0/raw/main/borg0.deb
 
 ## Snapcraft / Software Center
 https://snapcraft.io/borger0
