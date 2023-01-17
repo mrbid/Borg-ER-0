@@ -6,6 +6,13 @@ A portable (SDL) audio synthesizer / tone generator allows users to draw oscilla
 Read more about this project over at the official Medium article:<br>
 https://james-william-fletcher.medium.com/the-borg-er-3-46641d5784be
 
+## Snapcraft / Software Center
+https://snapcraft.io/borger0
+
+## Latest Release
+*Windows, Linux, Deb, AppImage, etc*<br>
+https://github.com/mrbid/Borg-ER-0/releases/tag/1.0
+
 ## Prerequisites
 `sudo apt install --assume-yes libsdl2-2.0-0 libsdl2-dev mingw-w64`
 
@@ -14,19 +21,3 @@ https://www.libsdl.org/release/SDL2-devel-2.0.16-mingw.tar.gz
 
 And the copy the `i686-w64-mingw32` folder into the borg directory
 and rename it to `SDL2`.
-
-## Windows Binary
-https://github.com/mrbid/Borg-ER-0/raw/main/borg0.exe<br>
-https://github.com/mrbid/Borg-ER-0/raw/main/SDL2.dll
-
-## Linux AppImage
-https://github.com/mrbid/Borg-ER-0/raw/main/borg0-x86_64.AppImage
-
-## Linux Binary (Ubuntu 22.10)
-https://github.com/mrbid/Borg-ER-0/raw/main/
-
-## Deb (Ubuntu 22.10)
-https://github.com/mrbid/Borg-ER-0/raw/main/borg0.deb
-
-## Snapcraft / Software Center
-https://snapcraft.io/borger0
