@@ -3,6 +3,9 @@ A portable (SDL) audio synthesizer / tone generator allows users to draw oscilla
 
 ![Image of the Borg-ER3](https://miro.medium.com/max/700/1*PIn60YZ3wNEytljl0B4aig.png)
 
+## Flathub
+https://flathub.org/apps/details/com.voxdsp.Borg0
+
 ## Snapcraft
 https://snapcraft.io/borger0
 
