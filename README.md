@@ -12,12 +12,3 @@ https://snapcraft.io/borger0
 ## Latest Release
 *Windows, Linux, Deb, AppImage, etc*<br>
 https://github.com/mrbid/Borg-ER-0/releases/tag/1.0
-
-## Prerequisites
-`sudo apt install --assume-yes libsdl2-2.0-0 libsdl2-dev mingw-w64 upx-ucl`
-
-For building on windows you will want to download SDL from here:<br>
-https://www.libsdl.org/release/SDL2-devel-2.0.16-mingw.tar.gz
-
-And the copy the `i686-w64-mingw32` folder into the borg directory
-and rename it to `SDL2`.
