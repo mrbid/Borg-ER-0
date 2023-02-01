@@ -3,7 +3,7 @@ A portable (SDL) audio synthesizer / tone generator allows users to draw oscilla
 
 ![Image of the Borg-ER3](https://miro.medium.com/max/700/1*PIn60YZ3wNEytljl0B4aig.png)
 
-`[shortcut]` Press the spacebar to play the sample.
+*[shortcut]* Press the spacebar to play the sample.
 
 ## Flathub
 https://flathub.org/apps/details/com.voxdsp.Borg0
