@@ -1,5 +1,5 @@
 all:
-	gcc main.c -Ofast -lSDL2 -lm -o borger0
+	gcc ../main.c -Ofast -lSDL2 -lm -o borger0
 
 install:
 	cp borger0 $(DESTDIR)
