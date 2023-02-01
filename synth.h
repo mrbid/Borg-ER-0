@@ -31,7 +31,6 @@ void setSampleLen(Uint32 seconds);
 void playSample();
 void stopSample();
 
-
 /*
     functions bodies
 */
