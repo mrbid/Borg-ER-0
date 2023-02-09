@@ -30,6 +30,7 @@ apps:
     - opengl
     - wayland
     - x11
+    - home
 
 parts:
   borger0:
