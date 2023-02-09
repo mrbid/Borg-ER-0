@@ -607,6 +607,24 @@ int main(int argc, char *args[])
 
                     if(event.button.button == SDL_BUTTON_RIGHT)
                     {
+                        // dial sensitivity
+                        Uint8 sc = 0; // skip check
+                        for(int i = 0; i < TOTAL_DIALS; i++)
+                        {
+                            if(inrange(&ui.dial_hover[i], &sc, x, y, dial_rect[i]) == 1)
+                            {
+                                select_mode++;
+                                if(select_mode >= 3)
+                                    select_mode = 0;
+                                break;
+                            }
+                        }
+                        if(sc == 1)
+                        {
+                            render(screen);
+                            break;
+                        }
+
                         // reset envelope
                         if(x > envelope_rect.x && x < envelope_rect.x+envelope_rect.w && y > envelope_rect.y && y < envelope_rect.y+envelope_rect.h)
                         {
@@ -627,10 +645,6 @@ int main(int argc, char *args[])
                             render(screen);
                             break;
                         }
-
-                        select_mode++;
-                        if(select_mode >= 3)
-                            select_mode = 0;
                         
                         render(screen);
                     }
