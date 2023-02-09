@@ -8,6 +8,10 @@
 #include <stdio.h>
 #include <math.h>
 
+#ifdef __linux__
+    #include <sys/stat.h>
+#endif
+
 #include "sdl_extra.h"
 #include "synth.h"
 #include "res.h"
@@ -223,12 +227,12 @@ void render(SDL_Surface* screen)
     // oscillator
     Uint32 eby = osc_rect.y+osc_rect.h-2;
     Uint32 ofh = (osc_rect.h-3);
-    line(bb, osc_rect.x, eby-(ofh/2), osc_rect.x, eby-(ofh*synth[selected_bank].osctable[0]), 220, 95, 117);
+    linergb(bb, osc_rect.x, eby-(ofh/2), osc_rect.x, eby-(ofh*synth[selected_bank].osctable[0]), 220, 95, 117);
     for(int i = 1; i < osc_rect.w-2; i++)
     {
-        line(bb, osc_rect.x+i, eby-(ofh*synth[selected_bank].osctable[i-1]), osc_rect.x+i+1, eby-(ofh*synth[selected_bank].osctable[i]), 220, 95, 117);
+        linergb(bb, osc_rect.x+i, eby-(ofh*synth[selected_bank].osctable[i-1]), osc_rect.x+i+1, eby-(ofh*synth[selected_bank].osctable[i]), 220, 95, 117);
     }
-    line(bb, osc_rect.x+osc_rect.w-1, eby-(ofh*synth[selected_bank].osctable[osc_rect.w-3]), osc_rect.x+osc_rect.w-1, eby-(ofh/2), 220, 95, 117);
+    linergb(bb, osc_rect.x+osc_rect.w-1, eby-(ofh*synth[selected_bank].osctable[osc_rect.w-3]), osc_rect.x+osc_rect.w-1, eby-(ofh/2), 220, 95, 117);
     if(osc_enabled == 1)
         setColourLightness(bb, osc_rect, scopecolor, 33);
 
@@ -236,7 +240,7 @@ void render(SDL_Surface* screen)
     eby = envelope_rect.y+envelope_rect.h-2;
     for(int i = 0; i < envelope_rect.w-2; i++)
     {
-        line(bb, envelope_rect.x+i+1, eby, envelope_rect.x+i+1, eby-((envelope_rect.h-3)*synth[selected_bank].envelope[i]), 220, 95, 117);
+        linergb(bb, envelope_rect.x+i+1, eby, envelope_rect.x+i+1, eby-((envelope_rect.h-3)*synth[selected_bank].envelope[i]), 220, 95, 117);
     }
     if(envelope_enabled == 1)
         setColourLightness(bb, envelope_rect, scopecolor, 33);
@@ -252,7 +256,7 @@ void render(SDL_Surface* screen)
         const float s1 = (sinf(1.570796371f + (synth[selected_bank].dial_state[i] * 6.283185482f)) * radius)+0.5f;
         const Uint32 ex = sx + c1;
         const Uint32 ey = sy + s1;
-        line(bb, sx, sy, ex, ey, 255,255,255);
+        linergb(bb, sx, sy, ex, ey, 255,255,255);
 
         if(ui.dial_hover[i] == 1)
         {
@@ -266,21 +270,21 @@ void render(SDL_Surface* screen)
 
             if(select_mode == 0)
             {
-                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 108, 108, 108);
-                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 108, 108, 108);
-                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
+                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 108, 108, 108);
+                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 108, 108, 108);
+                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
             }
             else if(select_mode == 1)
             {
-                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 0, 163, 232);
-                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 0, 163, 232);
-                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
+                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 0, 163, 232);
+                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 0, 163, 232);
+                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
             }
             else if(select_mode == 2)
             {
-                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 220, 95, 117);
-                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 220, 95, 117);
-                circle(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
+                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 10, 220, 95, 117);
+                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 11, 220, 95, 117);
+                circlergb(bb, dial_rect[i].x+hh, dial_rect[i].y+hh, 12, 255, 255, 255);
             }
         }
     }
@@ -344,11 +348,17 @@ int main(int argc, char *args[])
         return 1;
     }
 
+    // credit
+    printf("Borg ER-0 by James William Fletcher\n");
+
     // get app dir
     basedir = SDL_GetBasePath();
     appdir = SDL_GetPrefPath("voxdsp", "borger0");
     printf("basePath: %s\n", basedir);
     printf("prefPath: %s\n", appdir);
+#ifdef __linux__
+    printf("exportPath: %s/Documents/Borg_ER-0\n\n", getenv("HOME"));
+#endif
 
     // sdl version
     SDL_version compiled;
@@ -357,6 +367,11 @@ int main(int argc, char *args[])
     SDL_GetVersion(&linked);
     printf("Compiled against SDL version %u.%u.%u.\n", compiled.major, compiled.minor, compiled.patch);
     printf("Linked against SDL version %u.%u.%u.\n", linked.major, linked.minor, linked.patch);
+
+    // instructions
+    printf("Binds to play audio: spacebar, mouse3, mouse4\n");
+    printf("Reset envelope/oscillator: right click on it\n");
+    printf("Scroll dial sensitivity selection: right click, three sensitvity options\n\n");
 
     // load assets
     loadAssets(screen);
@@ -552,6 +567,7 @@ int main(int argc, char *args[])
                     
                     if(osc_enabled == 1)
                     {
+                        SDL_CaptureMouse(SDL_FALSE);
                         osc_enabled = 0;
                         doSynth(0);
                         render(screen);
@@ -559,6 +575,7 @@ int main(int argc, char *args[])
                     }
                     if(envelope_enabled == 1)
                     {
+                        SDL_CaptureMouse(SDL_FALSE);
                         envelope_enabled = 0;
                         doSynth(0);
                         render(screen);
@@ -590,14 +607,39 @@ int main(int argc, char *args[])
 
                     if(event.button.button == SDL_BUTTON_RIGHT)
                     {
+                        // reset envelope
+                        if(x > envelope_rect.x && x < envelope_rect.x+envelope_rect.w && y > envelope_rect.y && y < envelope_rect.y+envelope_rect.h)
+                        {
+                            for(int i = 0; i < envelope_rect.w-2; i++)
+                                synth[selected_bank].envelope[i] = 0.5f;
+                            doSynth(0);
+                            render(screen);
+                            break;
+                        }
+
+                        // reset osc
+                        if(x > osc_rect.x && x < osc_rect.x+osc_rect.w && y > osc_rect.y && y < osc_rect.y+osc_rect.h)
+                        {
+                            const float su = 6.283185482f / (float)(osc_rect.w-2);
+                            for(int i = 0; i < osc_rect.w-2; i++)
+                                synth[selected_bank].osctable[i] = (sinf(su*i)+1.0f)*0.5f;
+                            doSynth(0);
+                            render(screen);
+                            break;
+                        }
+
                         select_mode++;
                         if(select_mode >= 3)
                             select_mode = 0;
                         
                         render(screen);
                     }
-
-                    if(event.button.button == SDL_BUTTON_LEFT)
+                    else if(event.button.button == SDL_BUTTON_X1 || event.button.button == SDL_BUTTON_MIDDLE)
+                    {
+                        doSynth(1);
+                        render(screen);
+                    }
+                    else if(event.button.button == SDL_BUTTON_LEFT)
                     {
                         Uint8 sc = 0; // skip check
 
@@ -617,11 +659,13 @@ int main(int argc, char *args[])
                             {
                                 sc=1;
                                 envelope_enabled = 1;
+                                SDL_CaptureMouse(SDL_TRUE);
                             }
                             else if(x > osc_rect.x && x < osc_rect.x+osc_rect.w && y > osc_rect.y && y < osc_rect.y+osc_rect.h)
                             {
                                 sc=1;
                                 osc_enabled = 1;
+                                SDL_CaptureMouse(SDL_TRUE);
                             }
                             else if(ui.play_hover == 1)
                             {
@@ -632,7 +676,14 @@ int main(int argc, char *args[])
                             {
                                 sc=1;
                                 char file[256];
+#ifdef __linux__
+                                sprintf(file, "%s/Documents/Borg_ER-0", getenv("HOME"));
+                                mkdir(file, 0755);
+                                sprintf(file, "%s/bank-%d.wav", file, selected_bank);
+                                printf("File written to: %s\n", file);
+#else
                                 sprintf(file, "bank-%d.wav", selected_bank);
+#endif
                                 writeWAV(file);
 
                                 // some user feedback
