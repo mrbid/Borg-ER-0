@@ -190,29 +190,29 @@ void render(SDL_Surface* screen)
     if(selected_bank < 10)
     {
         sprintf(val, "%d", selected_bank);
-        drawText(bb, val, 38, 267, 0);
+        drawText(bb, val, 38, 267);
     }
     else if(selected_bank < 100)
     {
         sprintf(val, "%d", selected_bank);
-        drawText(bb, val, 35, 267, 0);
+        drawText(bb, val, 35, 267);
     }
     else
     {
         sprintf(val, "%d", selected_bank);
-        drawText(bb, val, 30, 267, 0);
+        drawText(bb, val, 30, 267);
     }
 
     // draw sec len
     if(synth[selected_bank].seclen < 10)
     {
         sprintf(val, "%d Sec", synth[selected_bank].seclen);
-        drawText(bb, val, 919, 267, 0);
+        drawText(bb, val, 919, 267);
     }
     else if(synth[selected_bank].seclen < 100)
     {
         sprintf(val, "%d Sec", synth[selected_bank].seclen);
-        drawText(bb, val, 916, 267, 0);
+        drawText(bb, val, 916, 267);
     }
 
     // oscillator
@@ -257,7 +257,7 @@ void render(SDL_Surface* screen)
                 sprintf(val, "Frequency: %+.2f", synth[selected_bank].dial_state[i] * dial_scale[i]);
             else
                 sprintf(val, "Amplitude: %+.2f", synth[selected_bank].dial_state[i] * dial_scale[i]);
-            drawText(bb, val, 811, 249, 1);
+            drawText(bb, val, 811, 249);
 
             if(select_mode == 0)
             {
@@ -755,7 +755,7 @@ int main(int argc, char *args[])
                     SDL_FreeSurface(s_bg);
                     SDL_FreeSurface(s_icon);
                     SDL_CursorPointer(1337);
-                    drawText(NULL, "*K", 0, 0, 0);
+                    drawText(NULL, "*K", 0, 0);
                     SDL_DestroyWindow(window);
                     SDL_CloseAudio();
                     SDL_Quit();
