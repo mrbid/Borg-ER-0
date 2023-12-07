@@ -237,7 +237,7 @@ void render(SDL_Surface* screen)
         setColourLightness(bb, envelope_rect, scopecolor, 33);
 
     // dial hover & state
-    const Uint32 hh = dial_rect[0].h/2; // no point making this static (hack: all the same width)
+    const Uint32 hh = dial_rect[0].h/2; // no point making this static (hack: all the same height)
     for(int i = 0; i < TOTAL_DIALS; i++)
     {
         const Uint32 sx = dial_rect[i].x+hh;
@@ -348,7 +348,7 @@ int main(int argc, char *args[])
     printf("basePath: %s\n", basedir);
     printf("prefPath: %s\n", appdir);
 #ifdef __linux__
-    printf("exportPath: %s/Documents/Borg_ER-0\n\n", getenv("HOME"));
+    printf("exportPath: %s/EXPORTS/Borg_ER-0\n\n", getenv("HOME"));
 #endif
 
     // sdl version
@@ -396,6 +396,7 @@ int main(int argc, char *args[])
     while(1)
     {
         SDL_Event event;
+        Sint32 rx, ry;
         while(SDL_WaitEvent(&event))
         {
             switch(event.type)
@@ -447,8 +448,6 @@ int main(int argc, char *args[])
                     // render dial rotations or button hovers
                     if(selected_dial >= 0)
                     {
-                        const Sint32 hh = dial_rect[selected_dial].h/2; // no point making this static
-
                         // scale dial sensitivity
                         float sense = 0.001f / dial_scale[selected_dial];
                         if(select_mode == 0)
@@ -464,13 +463,12 @@ int main(int argc, char *args[])
                             sense = 1.6f / dial_scale[selected_dial];
 
                         // do rotation
-                        synth[selected_bank].dial_state[selected_dial] += ((dial_rect[selected_dial].y+hh) - y)*sense;
+                        SDL_GetRelativeMouseState(&rx, &ry);
+                        if(ry != 0){synth[selected_bank].dial_state[selected_dial] -= ((float)(ry))*sense;}
                         if(synth[selected_bank].dial_state[selected_dial] >= 1.f)
                             synth[selected_bank].dial_state[selected_dial] = 1.f;
                         else if(synth[selected_bank].dial_state[selected_dial] < -1.f)
                             synth[selected_bank].dial_state[selected_dial] = -1.f;
-                        if(y != dial_rect[selected_dial].y+hh)
-                            SDL_WarpMouseInWindow(window, dial_rect[selected_dial].x+hh, dial_rect[selected_dial].y+hh);
 
                         // tick dial turn renders at 20 fps
                         static Uint32 lt = 0;
@@ -574,7 +572,8 @@ int main(int argc, char *args[])
                     }
                     else if(selected_dial >= 0)
                     {
-                        SDL_ShowCursor(1);
+                        SDL_GetRelativeMouseState(&rx, &ry);
+                        SDL_SetRelativeMouseMode(SDL_FALSE);
                         selected_dial = -1;
                         doSynth(0);
                         render(screen);
@@ -652,7 +651,8 @@ int main(int argc, char *args[])
                         {
                             if(ui.dial_hover[i] == 1)
                             {
-                                SDL_ShowCursor(0);
+                                SDL_GetRelativeMouseState(&rx, &ry);
+                                SDL_SetRelativeMouseMode(SDL_TRUE);
                                 selected_dial = i;
                                 break;
                             }
@@ -682,7 +682,7 @@ int main(int argc, char *args[])
                                 sc=1;
                                 char file[256];
 #ifdef __linux__
-                                sprintf(file, "%s/Documents", getenv("HOME"));
+                                sprintf(file, "%s/EXPORTS", getenv("HOME"));
                                 mkdir(file, 0755);
                                 sprintf(file, "%s/Borg_ER-0", file);
                                 mkdir(file, 0755);
