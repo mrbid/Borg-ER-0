@@ -1,6 +1,6 @@
 name: borger0
 base: core18
-version: '1.0.1'
+version: '1.0.2'
 summary: Draw oscillators and envelopes.
 description: |
   This is a very simple tone generator that allows users to draw an oscillator wave-shape and envelope, the oscillator can then be tuned by frequency and amplitude.
