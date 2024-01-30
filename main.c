@@ -574,6 +574,8 @@ int main(int argc, char *args[])
                     {
                         SDL_GetRelativeMouseState(&rx, &ry);
                         SDL_SetRelativeMouseMode(SDL_FALSE);
+                        const Sint32 hh = dial_rect[selected_dial].h/2; // no point making this static
+                        SDL_WarpMouseInWindow(window, dial_rect[selected_dial].x+hh, dial_rect[selected_dial].y+hh);
                         selected_dial = -1;
                         doSynth(0);
                         render(screen);
